@@ -1,0 +1,41 @@
+{
+  "name": "time-conversion-ts",
+  "version": "0.1.0",
+  "description": "A tiny typescript library to convert between various time units",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "mocha -r @ts-tools/node \"test/**/*.test.ts\"",
+    "build": "tsc",
+    "lint": "tslint -p tsconfig.json",
+    "prepublishOnly": "npm test && npm run lint"
+  },
+  "keywords": [
+    "time",
+    "conversion"
+  ],
+  "author": "Cavan Flynn <cavan.m.flynn@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@ts-tools/node": "^0.8.3",
+    "@types/chai": "^4.1.7",
+    "@types/crypto-js": "^3.1.43",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {},
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cavanmflynn/time-conversion-ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cavanmflynn/time-conversion-ts/issues"
+  },
+  "homepage": "https://github.com/cavanmflynn/time-conversion-ts#readme"
+}
