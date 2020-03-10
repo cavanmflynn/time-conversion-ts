@@ -1,6 +1,6 @@
 {
   "name": "time-conversion-ts",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A tiny typescript library to convert between various time units",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
