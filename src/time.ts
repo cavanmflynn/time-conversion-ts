@@ -1,4 +1,4 @@
-import { Hours, Milliseconds, Minutes, Seconds, Ticks } from './conversions';
+import { Hours, Milliseconds, Minutes, Seconds } from './conversions';
 import { ITimeQuantity, TimeUnit } from './types';
 
 export class Time {

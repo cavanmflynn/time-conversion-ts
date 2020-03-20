@@ -27,13 +27,3 @@ export namespace Milliseconds {
     Day = Hour * Hours.Per.Day,
   }
 }
-
-export namespace Ticks {
-  export const enum Per {
-    Millisecond = 10000,
-    Second = Millisecond * Milliseconds.Per.Second,
-    Minute = Second * Seconds.Per.Minute,
-    Hour = Minute * Minutes.Per.Hour,
-    Day = Hour * Hours.Per.Day,
-  }
-}
