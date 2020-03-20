@@ -1,5 +1,4 @@
 export interface ITimeMeasurement {
-  ticks: number;
   milliseconds: number;
   seconds: number;
   minutes: number;
@@ -13,7 +12,6 @@ export interface ITimeQuantity {
 }
 
 export enum TimeUnit {
-  Ticks,
   Milliseconds,
   Seconds,
   Minutes,

@@ -13,17 +13,15 @@ export class Time {
   ): number {
     switch (units) {
       case TimeUnit.Days:
-        return value * Hours.Per.Day;
+        value *= Hours.Per.Day;
       case TimeUnit.Hours:
-        return value * Minutes.Per.Hour;
+        value *= Minutes.Per.Hour;
       case TimeUnit.Minutes:
-        return value * Seconds.Per.Minute;
+        value *= Seconds.Per.Minute;
       case TimeUnit.Seconds:
-        return value * Milliseconds.Per.Second;
+        value *= Milliseconds.Per.Second;
       case TimeUnit.Milliseconds:
         return value;
-      case TimeUnit.Ticks:
-        return value / Ticks.Per.Millisecond;
       default:
         throw new Error('Invalid TimeUnit');
     }
@@ -31,7 +29,7 @@ export class Time {
 
   /**
    * Convert a time value from milliseconds to any supported unit
-   * @param value The time value to convert
+   * @param ms The millisecond time value to convert
    * @param units The time value unit type
    */
   public static fromMilliseconds(ms: number, units: TimeUnit) {
@@ -46,8 +44,53 @@ export class Time {
         return ms / Milliseconds.Per.Second;
       case TimeUnit.Milliseconds:
         return ms;
-      case TimeUnit.Ticks:
-        return ms * Ticks.Per.Millisecond;
+      default:
+        throw new Error('Invalid TimeUnit');
+    }
+  }
+
+  /**
+   * Convert a time value from any supported unit to seconds
+   * @param value The time value to convert
+   * @param units The time value unit type
+   */
+  public static toSeconds(
+    value: number,
+    units: TimeUnit = TimeUnit.Seconds,
+  ): number {
+    switch (units) {
+      case TimeUnit.Days:
+        value *= Hours.Per.Day;
+      case TimeUnit.Hours:
+        value *= Minutes.Per.Hour;
+      case TimeUnit.Minutes:
+        value *= Seconds.Per.Minute;
+      case TimeUnit.Seconds:
+        return value;
+      case TimeUnit.Milliseconds:
+        return value / Milliseconds.Per.Second;
+      default:
+        throw new Error('Invalid TimeUnit');
+    }
+  }
+
+  /**
+   * Convert a time value from seconds to any supported unit
+   * @param s The second time value to convert
+   * @param units The time value unit type
+   */
+  public static fromSeconds(s: number, units: TimeUnit) {
+    switch (units) {
+      case TimeUnit.Days:
+        return s / Seconds.Per.Day;
+      case TimeUnit.Hours:
+        return s / Seconds.Per.Hour;
+      case TimeUnit.Minutes:
+        return s / Seconds.Per.Minute;
+      case TimeUnit.Seconds:
+        return s;
+      case TimeUnit.Milliseconds:
+        return s * Milliseconds.Per.Second;
       default:
         throw new Error('Invalid TimeUnit');
     }
@@ -72,7 +115,7 @@ export class Time {
     if (
       isNaN(unit) ||
       unit > TimeUnit.Days ||
-      unit < TimeUnit.Ticks ||
+      unit < TimeUnit.Milliseconds ||
       Math.floor(unit) !== unit
     ) {
       throw new Error('Invalid TimeUnit');
